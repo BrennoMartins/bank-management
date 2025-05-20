@@ -1,6 +1,7 @@
-(ns bank-management.core)
+(ns bank-management.core
+  (:require [ring.adapter.jetty :refer [run-jetty]]
+            [bank-management.handler :refer [app]])
+  (:gen-class))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn -main [& args]
+  (run-jetty app {:port 3000 :join? false}))
