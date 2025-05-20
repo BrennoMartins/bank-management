@@ -11,7 +11,8 @@
                  [seancorfield/next.jdbc "1.2.659"]
                  [org.postgresql/postgresql "42.7.3"]]
   :repl-options {:init-ns bank-management.core}
-  :main bank-management.core)
+  :main bank-management.core
+  :uberjar-name "bank-management-0.1.0-SNAPSHOT-standalone.jar")
 
 ;; compojure (roteamento HTTP)
 ;; ring (servidor HTTP)
