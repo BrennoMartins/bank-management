@@ -18,8 +18,9 @@
                  (response/response banco)
                  (response/status (response/response {:erro "Não encontrado"}) 404))))
 
-           (POST "/bancos" {body :body}
-             (let [banco (db/criar-banco body)]
+           (POST "/bancos" {params :body-params}
+             (let [dados {:nome (:nome params)}
+                   banco (db/criar-banco dados)]
                (response/status (response/response banco) 201)))
 
            (PUT "/bancos/:codigo" [codigo :as {body :body}]

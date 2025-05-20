@@ -9,13 +9,16 @@
    :user "usuario"
    :password "1234"})
 
+
 (def datasource (jdbc/get-datasource db-spec))
 
 (defn listar-bancos []
   (sql/query datasource ["SELECT * FROM banco"]))
 
 (defn buscar-banco [codigo]
-  (sql/get-by-id datasource :banco codigo {:table-name-fn identity}))
+  (jdbc/execute-one! datasource
+                     ["SELECT * FROM banco WHERE codigo = ?" codigo]))
+
 
 (defn criar-banco [dados]
   (sql/insert! datasource :banco dados))
